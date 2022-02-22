@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ASPCoreREST.Repositories
 {
-    public class PersonRepository : IPersonRepository
+    public class SamplePersonRepository : IPersonRepository
     {
         private List<Person> samplePersons = new()
         {
