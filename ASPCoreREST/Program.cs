@@ -1,3 +1,4 @@
+using ASPCoreREST.Models;
 using ASPCoreREST.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IPersonRepository, SamplePersonRepository>();
+builder.Services.AddSingleton<IRepository<Employee>, SampleEmployeeRepository>();
 
 var app = builder.Build();
 
