@@ -13,9 +13,29 @@ namespace ASPCoreREST.Repositories
             new() { id = Guid.NewGuid(), Name = "Thomas"}
         };
 
+        public Task<bool> DeletePersonAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Person> GetPersonAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<Person>> GetPersonsAsync()
         {
             return await Task.FromResult(samplePersons);
+        }
+
+        public Task<Person> ModifyPersonAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Person> PostPersonAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

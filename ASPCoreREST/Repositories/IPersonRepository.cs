@@ -7,5 +7,9 @@ namespace ASPCoreREST.Repositories
     public interface IPersonRepository
     {
         Task<IEnumerable<Person>> GetPersonsAsync();
+        Task<Person> GetPersonAsync();
+        Task<Person> PostPersonAsync();
+        Task<Person> ModifyPersonAsync();
+        Task<bool> DeletePersonAsync();
     }
 }
