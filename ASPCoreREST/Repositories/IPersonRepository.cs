@@ -1,4 +1,5 @@
-﻿using ASPCoreREST.Models;
+﻿using ASPCoreREST.Dto;
+using ASPCoreREST.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,10 +7,10 @@ namespace ASPCoreREST.Repositories
 {
     public interface IPersonRepository
     {
-        Task<IEnumerable<Person>> GetPersonsAsync();
-        Task<Person> GetPersonAsync();
-        Task<Person> PostPersonAsync();
-        Task<Person> ModifyPersonAsync();
-        Task<bool> DeletePersonAsync();
+        Task<IEnumerable<Person>> GetPersonsAsync(Guid id);
+        Task<Person> GetPersonAsync(Guid id);
+        Task<Person> PostPersonAsync(PersonDto personDto);
+        Task<Person> ModifyPersonAsync(Guid id, PersonDto personDto);
+        Task<bool> DeletePersonAsync(Guid id);
     }
 }
