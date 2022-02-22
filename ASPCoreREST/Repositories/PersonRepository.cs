@@ -39,12 +39,15 @@ namespace ASPCoreREST.Repositories
             return await Task.FromResult(samplePersons);
         }
 
-        public async Task<Person> ModifyPersonAsync(Guid id, PersonDto personDto)
+        public async Task<Person> ModifyPersonAsync(Person newPerson)
         {
-            throw new NotImplementedException();
+            int personIndex = samplePersons.FindIndex(oldPerson => oldPerson.id == newPerson.id);
+            samplePersons[personIndex] = newPerson;
+
+            return await Task.FromResult(newPerson);
         }
 
-        public async Task<Person> PostPersonAsync(PersonDto personDto)
+        public async Task<Person> PostPersonAsync(Person person)
         {
             throw new NotImplementedException();
         }

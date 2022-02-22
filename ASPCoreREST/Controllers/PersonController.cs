@@ -51,5 +51,21 @@ namespace ASPCoreREST.Controllers
 
             return Ok(foundPerson);
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> ModifyPersonAsync(Guid id, CreatePersonDto updatedPersonDto)
+        {
+            var foundPerson = await personRepository.GetPersonAsync(id);
+
+            if (foundPerson is null)
+            {
+                return NotFound();
+            }
+
+            foundPerson = foundPerson with { Name = updatedPersonDto.Name };
+            var updatedPerson = await personRepository.ModifyPersonAsync(foundPerson);
+
+            return Ok(updatedPerson);
+        }
     }
 }
