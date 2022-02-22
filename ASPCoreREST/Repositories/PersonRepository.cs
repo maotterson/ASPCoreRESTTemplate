@@ -13,7 +13,7 @@ namespace ASPCoreREST.Repositories
             new() { id = Guid.NewGuid(), Name = "Thomas"}
         };
 
-        public async Task<bool> DeletePersonAsync(Guid id)
+        public async Task<bool> TryDeletePersonAsync(Guid id)
         {
             try
             {
@@ -46,9 +46,17 @@ namespace ASPCoreREST.Repositories
             return await Task.FromResult(newPerson);
         }
 
-        public async Task<Person> PostPersonAsync(Person person)
+        public async Task<bool> TryAddPersonAsync(Person person)
         {
-            throw new NotImplementedException();
+            try
+            {
+                samplePersons.Add(person);
+                return await Task.FromResult(true);
+            }
+            catch
+            {
+                return await Task.FromResult(false);
+            }
         }
     }
 }

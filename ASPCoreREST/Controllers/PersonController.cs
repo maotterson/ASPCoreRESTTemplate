@@ -29,7 +29,7 @@ namespace ASPCoreREST.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeletePersonAsync(Guid id)
         {
-            var isDeleted = await personRepository.DeletePersonAsync(id);
+            var isDeleted = await personRepository.TryDeletePersonAsync(id);
 
             if (!isDeleted)
             {
@@ -66,6 +66,25 @@ namespace ASPCoreREST.Controllers
             var updatedPerson = await personRepository.ModifyPersonAsync(foundPerson);
 
             return Ok(updatedPerson);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreatePersonAsync(CreatePersonDto updatedPersonDto)
+        {
+            Person createdPerson = new()
+            {
+                id = Guid.NewGuid(),
+                Name = updatedPersonDto.Name
+            };
+
+            bool isCreated = await personRepository.TryAddPersonAsync(createdPerson);
+
+            if (!isCreated)
+            {
+                return BadRequest();
+            }
+
+            return Ok(createdPerson);
         }
     }
 }

@@ -9,8 +9,8 @@ namespace ASPCoreREST.Repositories
     {
         Task<IEnumerable<Person>> GetPersonsAsync();
         Task<Person> GetPersonAsync(Guid id);
-        Task<Person> PostPersonAsync(Person person);
+        Task<bool> TryAddPersonAsync(Person person);
         Task<Person> ModifyPersonAsync(Person updatedPerson);
-        Task<bool> DeletePersonAsync(Guid id);
+        Task<bool> TryDeletePersonAsync(Guid id);
     }
 }
