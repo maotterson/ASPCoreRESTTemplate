@@ -25,5 +25,12 @@ namespace ASPCoreREST.Controllers
 
             return persons;
         }
+
+        [HttpDelete("{id}")]
+        public async Task<bool> DeletePersonAsync(Guid id)
+        {
+            var isDeleted = await personRepository.DeletePersonAsync(id);
+            return isDeleted;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ASPCoreREST.Models;
+﻿using ASPCoreREST.Dto;
+using ASPCoreREST.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,12 +14,21 @@ namespace ASPCoreREST.Repositories
             new() { id = Guid.NewGuid(), Name = "Thomas"}
         };
 
-        public Task<bool> DeletePersonAsync()
+        public async Task<bool> DeletePersonAsync(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int personIndex = samplePersons.FindIndex(person => person.id == id);
+                samplePersons.RemoveAt(personIndex);
+                return await Task.FromResult(true);
+            }
+            catch
+            {
+                return await Task.FromResult(false);
+            }
         }
 
-        public Task<Person> GetPersonAsync()
+        public async Task<Person> GetPersonAsync(Guid id)
         {
             throw new NotImplementedException();
         }
@@ -28,12 +38,12 @@ namespace ASPCoreREST.Repositories
             return await Task.FromResult(samplePersons);
         }
 
-        public Task<Person> ModifyPersonAsync()
+        public async Task<Person> ModifyPersonAsync(Guid id, PersonDto personDto)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Person> PostPersonAsync()
+        public async Task<Person> PostPersonAsync(PersonDto personDto)
         {
             throw new NotImplementedException();
         }
