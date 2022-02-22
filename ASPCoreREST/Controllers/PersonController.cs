@@ -31,12 +31,25 @@ namespace ASPCoreREST.Controllers
         {
             var isDeleted = await personRepository.DeletePersonAsync(id);
 
-            if (isDeleted)
+            if (!isDeleted)
             {
-                return Ok();
+                return NotFound();
             }
 
-            return NotFound();
+            return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetPersonAsync(Guid id)
+        {
+            var foundPerson = await personRepository.GetPersonAsync(id);
+
+            if (foundPerson is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(foundPerson);
         }
     }
 }

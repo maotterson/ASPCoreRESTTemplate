@@ -30,7 +30,8 @@ namespace ASPCoreREST.Repositories
 
         public async Task<Person> GetPersonAsync(Guid id)
         {
-            throw new NotImplementedException();
+            Person foundPerson = samplePersons.Find(person => person.id == id);
+            return await Task.FromResult(foundPerson);
         }
 
         public async Task<IEnumerable<Person>> GetPersonsAsync()
