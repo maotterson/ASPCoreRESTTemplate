@@ -11,6 +11,7 @@ namespace ASPCoreREST.Helpers
         {
             PersonDto personDto = new()
             {
+                Id = person.id,
                 Name = person.Name
             };
 

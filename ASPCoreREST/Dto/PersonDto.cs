@@ -6,6 +6,12 @@ namespace ASPCoreREST.Dto
 {
     public record PersonDto
     {
+        public Guid Id { get; set; }
+        public string Name { get; init; }
+    }
+
+    public record CreatePersonDto
+    {
         [Required]
         public string Name { get; init; }
     }
