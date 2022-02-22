@@ -15,4 +15,10 @@ namespace ASPCoreREST.Dto
         [Required]
         public string Name { get; init; }
     }
+
+    public record ModifyPersonDto
+    {
+        [Required]
+        public string Name { get; init; }
+    }
 }

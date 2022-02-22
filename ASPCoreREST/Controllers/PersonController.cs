@@ -53,7 +53,7 @@ namespace ASPCoreREST.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> ModifyPersonAsync(Guid id, CreatePersonDto updatedPersonDto)
+        public async Task<ActionResult> ModifyPersonAsync(Guid id, ModifyPersonDto updatedPersonDto)
         {
             var foundPerson = await personRepository.GetPersonAsync(id);
 

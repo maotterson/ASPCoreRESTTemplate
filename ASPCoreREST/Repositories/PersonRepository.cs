@@ -1,5 +1,4 @@
-﻿using ASPCoreREST.Dto;
-using ASPCoreREST.Models;
+﻿using ASPCoreREST.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
