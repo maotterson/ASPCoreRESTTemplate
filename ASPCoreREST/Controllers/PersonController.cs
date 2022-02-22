@@ -18,19 +18,25 @@ namespace ASPCoreREST.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<PersonDto>> GetPersonsAsync()
+        public async Task<ActionResult<IEnumerable<PersonDto>>> GetPersonsAsync()
         {
             var persons = (await personRepository.GetPersonsAsync())
                 .Select(person => person.AsDto());
 
-            return persons;
+            return Ok(persons);
         }
 
         [HttpDelete("{id}")]
-        public async Task<bool> DeletePersonAsync(Guid id)
+        public async Task<ActionResult> DeletePersonAsync(Guid id)
         {
             var isDeleted = await personRepository.DeletePersonAsync(id);
-            return isDeleted;
+
+            if (isDeleted)
+            {
+                return Ok();
+            }
+
+            return NotFound();
         }
     }
 }
