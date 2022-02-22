@@ -7,7 +7,7 @@ namespace ASPCoreREST.Repositories
 {
     public interface IPersonRepository
     {
-        Task<IEnumerable<Person>> GetPersonsAsync(Guid id);
+        Task<IEnumerable<Person>> GetPersonsAsync();
         Task<Person> GetPersonAsync(Guid id);
         Task<Person> PostPersonAsync(PersonDto personDto);
         Task<Person> ModifyPersonAsync(Guid id, PersonDto personDto);
